@@ -1,0 +1,10 @@
+# Backend-specific ignored files
+.env
+.env.local
+*.exe
+*.exe~
+scout-api
+*.dll
+*.so
+*.dylib
+test-api.exe
