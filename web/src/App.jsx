@@ -52,6 +52,93 @@ const Instagram = (props) => (
   </svg>
 )
 
+// Custom Radar Icon & Brand Logo Component matching the brandbook
+const RadarBrandLogo = ({ className = "", isDark = false, showSubtitle = true, size = "md" }) => {
+  const isLarge = size === "lg";
+  return (
+    <div className={`flex ${isLarge ? 'flex-col items-center text-center space-y-3' : 'items-center space-x-3'} select-none ${className}`}>
+      {/* Radar Icon */}
+      <div className={`relative ${isLarge ? 'w-16 h-16' : 'w-10 h-10'} flex-shrink-0 flex items-center justify-center`}>
+        <svg
+          viewBox="0 0 40 40"
+          className={`${isLarge ? 'w-16 h-16' : 'w-10 h-10'}`}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Outer circle */}
+          <circle
+            cx="20"
+            cy="20"
+            r="18"
+            stroke={isDark ? "#ffffff" : "#0A1020"}
+            strokeWidth="1.5"
+            strokeOpacity={isDark ? "0.9" : "0.8"}
+          />
+          {/* Inner concentric ring (dashed) */}
+          <circle
+            cx="20"
+            cy="20"
+            r="12"
+            stroke={isDark ? "#ffffff" : "#0A1020"}
+            strokeWidth="1"
+            strokeDasharray="2 2"
+            strokeOpacity={isDark ? "0.5" : "0.4"}
+          />
+          <circle
+            cx="20"
+            cy="20"
+            r="6"
+            stroke={isDark ? "#ffffff" : "#0A1020"}
+            strokeWidth="1"
+            strokeOpacity={isDark ? "0.2" : "0.1"}
+          />
+          {/* Origin dot */}
+          <circle cx="20" cy="20" r="1.5" fill={isDark ? "#ffffff" : "#0A1020"} />
+          
+          {/* Radar Sweep Ray pointing to top-left (~135 deg) */}
+          <line
+            x1="20"
+            y1="20"
+            x2="10"
+            y2="10"
+            stroke="#00D4FF"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          {/* Target Spot at end of ray */}
+          <circle cx="10" cy="10" r="2.5" fill="#00D4FF" />
+          {/* Ripple around target spot */}
+          <circle
+            cx="10"
+            cy="10"
+            r="5"
+            stroke="#00D4FF"
+            strokeWidth="1"
+            strokeOpacity="0.4"
+            className="animate-ping"
+            style={{ transformOrigin: '10px 10px' }}
+          />
+          
+          {/* Additional background target dots */}
+          <circle cx="28" cy="15" r="1" fill={isDark ? "#ffffff" : "#0A1020"} fillOpacity="0.3" />
+          <circle cx="14" cy="27" r="1" fill={isDark ? "#ffffff" : "#0A1020"} fillOpacity="0.2" />
+        </svg>
+      </div>
+      
+      <div className={`flex flex-col ${isLarge ? 'items-center' : 'items-start'}`}>
+        <span className={`font-heading font-extrabold tracking-wider leading-none text-slate-900 dark:text-white ${isLarge ? 'text-2xl' : 'text-base'}`}>
+          RADAR
+        </span>
+        {showSubtitle && (
+          <span className={`font-bold tracking-widest text-indigo-500 dark:text-indigo-400 uppercase leading-none mt-1 ${isLarge ? 'text-[9px]' : 'text-[8px]'}`}>
+            AI MARKET INTELLIGENCE PLATFORM
+          </span>
+        )}
+      </div>
+    </div>
+  )
+}
+
 function App() {
   // Authentication states
   const [token, setToken] = useState(localStorage.getItem('scout_token') || '')
@@ -450,13 +537,8 @@ function App() {
         }`}>
           {/* Header */}
           <div className="flex flex-col items-center mb-6">
-            <div className="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-500/20 mb-3 text-white">
-              <Sparkles className="w-6 h-6" />
-            </div>
-            <h2 className="text-xl font-bold tracking-tight">Вход в систему</h2>
-            <p className={`text-xs mt-1 text-center ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
-              Коммерческий разведчик • AI-разведка лидов
-            </p>
+            <RadarBrandLogo isDark={isDark} size="lg" className="mb-4" />
+            <h2 className="text-xl font-bold tracking-tight mt-2">Вход в систему</h2>
           </div>
 
           {authError && (
@@ -551,19 +633,7 @@ function App() {
         isDark ? 'border-slate-900 bg-slate-950/80 backdrop-blur-md' : 'border-slate-200 bg-white/80 backdrop-blur-md'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-500/20 text-white">
-              <Sparkles className="w-5 h-5" />
-            </div>
-            <div>
-              <h1 className={`text-base font-bold leading-none ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                Коммерческий Разведчик
-              </h1>
-              <span className={`text-[10px] tracking-wider uppercase font-bold ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>
-                AI Lead Qualification CRM
-              </span>
-            </div>
-          </div>
+          <RadarBrandLogo isDark={isDark} />
           
           <div className="flex items-center space-x-4">
             {/* Operator info details */}

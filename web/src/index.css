@@ -1,3 +1,53 @@
 @import "tailwindcss";
 
+@theme {
+  /* Colors from RADAR Brandbook */
+  --color-slate-50: #F5F7FA;
+  --color-slate-100: #eef1f6;
+  --color-slate-200: #e2e7f0;
+  --color-slate-250: #cbd5e1;
+  --color-slate-300: #b4c2d3;
+  --color-slate-400: #8B93A6; /* Slate color */
+  --color-slate-500: #6f798e;
+  --color-slate-600: #555e71;
+  --color-slate-700: #3c4354;
+  --color-slate-800: #1B2237;
+  --color-slate-850: #141A2D;
+  --color-slate-900: #13192E; /* Dark Blue */
+  --color-slate-950: #0A1020; /* Deep Navy */
+
+  --color-indigo-50: #e6faff;
+  --color-indigo-100: #ccf5ff;
+  --color-indigo-200: #99ebff;
+  --color-indigo-300: #66e0ff;
+  --color-indigo-400: #33d6ff;
+  --color-indigo-500: #00D4FF; /* Radar Cyan */
+  --color-indigo-600: #00bce2; /* slightly darker version of cyan for hover */
+  --color-indigo-750: #008ba8;
+  --color-indigo-800: #008ba8;
+  --color-indigo-900: #00738a;
+  --color-indigo-950: #0A1020;
+
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10B981; /* Success Green */
+  --color-emerald-600: #059669;
+
+  --color-teal-400: #34d399;
+  --color-teal-500: #10B981; /* Success Green mapping */
+  --color-teal-600: #059669;
+
+  /* Fonts from RADAR Brandbook */
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Manrope", sans-serif;
+}
+
 @variant dark (&:where(.dark, .dark *));
+
+/* Set global styles for typography */
+body {
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+}
