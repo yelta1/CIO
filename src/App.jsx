@@ -32,7 +32,7 @@ import {
 } from 'lucide-react'
 import './App.css'
 
-const API_BASE = 'http://localhost:8080/api'
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8080/api'
 
 // Inline Instagram Icon to replace missing ESM exports in some bundlers
 const Instagram = (props) => (
