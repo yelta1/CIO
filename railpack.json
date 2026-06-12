@@ -1,7 +1,6 @@
 {
   "$schema": "https://schema.railpack.com",
   "packages": {
-    "node": "22",
-    "go": "1.26"
+    "node": "22"
   }
 }
